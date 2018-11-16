@@ -1,6 +1,6 @@
 from random import choice
 
-from flask import Flask, render_template, flash, request
+from flask import Flask, render_template, flash, request, jsonify
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 
 
@@ -105,3 +105,8 @@ def department_booty():
     error_message=error_message,
     department_booty=department_booty,
     all_departments=all_departments)
+
+
+@app.route("/decks")
+def ithaka_decks():
+    return jsonify(DEPARTMENT_DATA)

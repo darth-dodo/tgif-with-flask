@@ -107,7 +107,7 @@
 
                     <section>
                         <h6>
-                            Verbs using water bottles
+                            HTTP Verbs using water bottles
                         </h6>
                     </section>
 
@@ -135,35 +135,12 @@
                     </section>
                 </section>
 
+                <!--<section>-->
+                    <!--<section>-->
+                        <!--<h5>Installation guides</h5>-->
 
-                <section>
-                    <section>
-                        What are can we use Flask for?
-                    </section>
-                    <section>
-                        <ul>
-                            <li>
-                                Doing database operations
-                            </li>
-                            <li>
-                                Getting data in Excel or CSV
-                            </li>
-                            <li>
-                                Hooking our system with external services such as Zapier
-                            </li>
-                            <li>
-                                Dashboards like the 6WoH
-                            </li>
-                        </ul>
-                    </section>
-                </section>
-
-                <section>
-                    <section>
-                        <h5>Installation guides</h5>
-
-                    </section>
-                </section>
+                    <!--</section>-->
+                <!--</section>-->
 
                 <section>
 
@@ -201,6 +178,7 @@
                                 from random import choice
                                 PIRATE_INSULTS = ["scallywag", "sack of fermented potatoes"]
                                 PIRATE_GREETINGS = ["Ahoy!", "Arrrrr!"]
+                                INVALID_NAME = 'Gimme a valid name'
 
                                 @app.route("/pirate/")
                                 @app.route("/pirate/<pirate_name>")
@@ -233,25 +211,88 @@
                         <section data-markdown>
                             <textarea data-template>
 
-                                ```py
-                                    DEPARTMENT_DATA = [
-                                                        {"name": "Engineering", "bio": "Bad at copywriting."},
-                                                        {"name": "Product", "bio": "Require more sleep."}
-                                                       ]
+```py
+DEPARTMENT_DATA = [
+{"name": "Engineering","bio": "Bad at copywriting."},
+{"name": "Product", "bio": "Require more coffee."}
+]
+from flask import jsonify
 
-                                from flask import jsonify
+@app.route("/decks")
+def ithaka_decks():
+    return jsonify(DEPARTMENT_DATA)
 
-                                @app.route("/decks")
-                                def ithaka_decks():
-                                    return jsonify(DEPARTMENT_DATA)
+```
 
-                                ```
+                            </textarea>
+                        </section>
+                    </section>
+
+                    <section>
+                        <h5> Guest session! 🔥</h5>
+                    </section>
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <h6>
+                            Getting some data <b>inside</b> a database using JSON format
+                        </h6>
+
+                        <section data-markdown>
+                            <textarea data-template>
+
+```py
+DEPARTMENT_DATA = [
+{"name": "Engineering", "bio": "Bad at copywriting."},
+{"name": "Product", "bio": "Require more sleep."}
+]
+
+from flask import jsonify
+
+@app.route("/decks", ['POST', 'GET'])
+def ithaka_decks():
+    if request.method == 'POST':
+        new_data = request.get_json('data')
+        DEPARTMENT_DATA.append(new_data)
+        response = jsonify(DEPARTMENT_DATA)
+        response.status_code = 201
+        return data
+		...
+
+```
 
                             </textarea>
                         </section>
                     </section>
 
                 </section>
+
+
+                <section>
+                    <section>
+                        What are can we use Flask for?
+                    </section>
+                    <section>
+                        <ul>
+                            <li>
+                                Doing database operations
+                            </li>
+                            <li>
+                                Getting data in Excel or CSV
+                            </li>
+                            <li>
+                                Hooking our system with external services such as Zapier
+                            </li>
+                            <li>
+                                Dashboards like the 6WoH
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+
 
 				<section>
 

@@ -108,8 +108,7 @@ def department_booty():
 
 
 @app.route("/decks/", methods=['GET', 'POST'])
-@app.route("/decks/<department_id>", methods=['PUT', 'PATCH'])
-def ithaka_decks(department_name=None):
+def ithaka_decks():
     DEPARTMENT_DATA = [
     {"name": "Engineering", "bio": "Bad at copywriting.", "id": 1},
     {"name": "Product", "bio": "Require more sleep.", "id": 2},

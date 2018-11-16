@@ -2,8 +2,12 @@
 <html>
     <head>
         <title>Gimme the booty</title>
+
     </head>
     <body>
+
+        <h1> Get that booty </h1>
+
         <form action="" method="post">
             {{ form.csrf }}
 
@@ -16,16 +20,30 @@
             </div>
         </form>
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message[1] }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
+          {% if error_message %}
+              <h5>  {{ error_message }} </h5>
+          {% endif %}
 
+          {% if all_departments %}
+            <h5> Available Department Names </h5>
+            <ul>
+              {% for department in all_departments %}
+                <li> {{ department }} </li>
+              {% endfor %}
+            </ul>
+
+          {% endif %}
+
+
+          {% if department_booty %}
+            <h5> Department Booty: </h5>
+            <ul>
+              {% for booty in department_booty %}
+                <li> {{ booty }} </li>
+              {% endfor %}
+            </ul>
+
+          {% endif %}
 
 
     </body>

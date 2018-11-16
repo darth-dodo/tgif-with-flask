@@ -18,15 +18,6 @@ PIRATE_INSULTS = ["yellow bellied, lily-livered landlubber!",
 "scallywag"
 ]
 
-DEPARTMENT_DATA = [
-{"name": "Engineering", "bio": "Bad at copywriting."},
-{"name": "Product", "bio": "Require more sleep."},
-{"name": "Growth", "bio": "Discuss about funnel conversions and throughputs."},
-{"name": "ChOps", "bio": "The secret sauce <3"},
-{"name": "Business", "bio": "Onboarding vendors like a boss"},
-{"name": "Communiteam", "bio": "Data and Sutta and Chai and Love"}
-]
-
 PIRATE_BOOTY = {
 "chops": ['No compromise attitude', 'FR', 'Sales smarts'],
 "growth": ['Funnel metrics', 'Social Media', 'Blogs, blogs and more blogs'],
@@ -59,6 +50,15 @@ def booty_error_message_generator():
     random_insult = choice(PIRATE_INSULTS)
     error_message = '{0}, ye {1}'.format(INVALID_DECK, random_insult)
     return error_message
+
+def return_invalid_department_id_error():
+    invalid_department_payload = {"status": False,
+    "message": "Please provide a department id"}
+    response = jsonify(invalid_department_payload)
+    response.status_code = 400
+
+    return response
+
 
 # controllers
 @app.route("/")
@@ -107,6 +107,37 @@ def department_booty():
     all_departments=all_departments)
 
 
-@app.route("/decks")
-def ithaka_decks():
-    return jsonify(DEPARTMENT_DATA)
+@app.route("/decks/", methods=['GET', 'POST'])
+@app.route("/decks/<department_id>", methods=['PUT', 'PATCH'])
+def ithaka_decks(department_name=None):
+    DEPARTMENT_DATA = [
+    {"name": "Engineering", "bio": "Bad at copywriting.", "id": 1},
+    {"name": "Product", "bio": "Require more sleep.", "id": 2},
+    {"name": "Growth", "bio": "Discuss about funnel conversions and throughputs.", "id": 3},
+    {"name": "ChOps", "bio": "The secret sauce <3", "id": 4},
+    {"name": "Business", "bio": "Onboarding vendors like a boss", "id": 5},
+    {"name": "Communiteam", "bio": "Data and Sutta and Chai and Love", "id": 6}
+    ]
+
+    if request.method == 'GET':
+        response = jsonify(DEPARTMENT_DATA)
+        response.status_code = 200
+
+
+    elif request.method == 'POST':
+        new_data = request.get_json('data')
+        DEPARTMENT_DATA.append(new_data)
+        response = jsonify(DEPARTMENT_DATA)
+        response.status_code = 201
+
+    # elif request.method == 'PUT':
+    #     if not department_id:
+    #         return return_invalid_department_id_error()
+    #
+    #     if int(department_id) not in all_department_ids:
+    #         return return_invalid_department_id_error()
+
+        # DEPARTMENT_DATA = parse_put_data(existing_all_department_data=required_department_data,
+        # name=department_name)
+
+    return response

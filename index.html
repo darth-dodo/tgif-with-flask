@@ -52,13 +52,13 @@
 
                     <section>
                         <h6>
-                            Begin to understanding how software enables Ithaka team to create magic
+                            Begin to understanding how software enables Ithaka team to create magic ✨
                         </h6>
                     </section>
 
                     <section>
                         <h6>
-                            Get on board when backend requires extra help
+                            Get on board when backend requires extra help 🆘
                         </h6>
 												<sub>(<b>*cough cough*</b> Ajay <b>*cough cough*)</b></sub>
                     </section>
@@ -80,7 +80,7 @@
 
 
                     <section>
-                        <h6>Live demo with Flask + Python!</h6>
+                        <h6>Live demo with Flask + Python! 🐍</h6>
                     </section>
 
                     <section>
@@ -113,7 +113,7 @@
 
                     <section>
                         <h6>
-                            Request response cycle bottles
+                            Request response cycle using aforementioned bottles
                         </h6>
                     </section>
 
@@ -121,6 +121,41 @@
                         <h1>Let's get started with Flask!</h1>
                     </section>
 
+                </section>
+
+
+                <section>
+
+                    <section>
+                        <h5> Wait, what do we mean by the "Backend Framework"? Framework? Again?! 🙄</h5>
+                    </section>
+
+                    <section>
+                        <h5>WTFlask?</h5>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        What are can we use Flask for?
+                    </section>
+                    <section>
+                        <ul>
+                            <li>
+                                Doing database operations
+                            </li>
+                            <li>
+                                Getting data in Excel or CSV
+                            </li>
+                            <li>
+                                Hooking our system with external services such as Zapier
+                            </li>
+                            <li>
+                                Dashboards like the 6WoH
+                            </li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>
@@ -183,6 +218,36 @@
 
                             </textarea>
 
+                        </section>
+                    </section>
+
+                </section>
+
+                <section>
+
+                    <section>
+                        <h6>
+                            Getting some data from a database in JSON format
+                        </h6>
+
+                        <section data-markdown>
+                            <textarea data-template>
+
+                                ```py
+                                    DEPARTMENT_DATA = [
+                                                        {"name": "Engineering", "bio": "Bad at copywriting."},
+                                                        {"name": "Product", "bio": "Require more sleep."}
+                                                       ]
+
+                                from flask import jsonify
+
+                                @app.route("/decks")
+                                def ithaka_decks():
+                                    return jsonify(DEPARTMENT_DATA)
+
+                                ```
+
+                            </textarea>
                         </section>
                     </section>
 

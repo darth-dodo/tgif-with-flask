@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>TGIFlask</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+                    <section>
+                        <h1>
+                            TGI-Flask
+														<iframe src="https://giphy.com/embed/3og0IEXRvwMN0cLSaQ" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>
+												<h1>
+
+                    </section>
+
+				</section>
+
+                <section>
+
+                    <section>
+                        <h1>
+                            Why?
+                        </h1>
+                    </section>
+
+
+                    <section>
+                        <h6>
+                            More power to you! 💪
+                        </h6>
+                    </section>
+
+                    <section>
+                        <h6>
+                            Begin to understanding how software enables Ithaka team to create magic
+                        </h6>
+                    </section>
+
+                    <section>
+                        <h6>
+                            Get on board when backend requires extra help
+                        </h6>
+												<sub>(<b>*cough cough*</b> Ajay <b>*cough cough*)</b></sub>
+
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h1>
+                            How?
+                        </h1>
+                    </section>
+
+                    <section>
+                        <h6>
+                            High level understanding how a website works
+                        </h6>
+                    </section>
+
+
+                    <section>
+                        <h6>Live demo with Flask + Python!</h6>
+                    </section>
+
+                    <section>
+                        <h6>
+                            Asking questions! 🔥
+                        </h6>
+                    </section>
+                </section>
+
+                <section>
+
+                    <section>
+                        <h1>
+                            What?
+                        </h1>
+                    </section>
+
+                    <section>
+                        <h6>
+                            Generic client server workflow
+                        </h6>
+                        <iframe src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Client-server-model.svg" width="480" height="365" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                    </section>
+
+                    <section>
+                        <h6>
+                            Verbs using water bottles
+                        </h6>
+                    </section>
+
+                    <section>
+                        <h6>
+                            Request response cycle bottles
+                        </h6>
+                    </section>
+
+                    <section>
+                        <h1>Let's get started with Flask!</h1>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h5>Installation guides</h5>
+
+                    </section>
+                </section>
+
+                <section>
+
+                    <section>
+                        <h6>Hello, Pirates!</h6>
+
+                        <section data-markdown>
+                            <textarea data-template>
+
+                                ```py
+                                from flask import Flask
+                                app = Flask(__name__)
+
+                                @app.route("/")
+                                def hello():
+                                    return "Hello, Pirates!"
+                                ```
+
+                                Let's run it on our local system
+
+                                ```sh
+                                FLASK_APP=tgi-flask.py flask run
+                                ```
+
+                            </textarea>
+                        </section>
+
+                    </section>
+                    <section>
+                        <h6>Accepting simple input</h6>
+                        <section data-markdown>
+                            <textarea data-template>
+
+                                ```py
+                                from random import choice
+                                PIRATE_INSULTS = ["scallywag", "sack of fermented potatoes"]
+                                PIRATE_GREETINGS = ["Ahoy!", "Arrrrr!"]
+
+                                @app.route("/pirate/")
+                                @app.route("/pirate/<pirate_name>")
+                                def pirate_greet(pirate_name=None):
+
+                                    if not pirate_name:
+
+                                        random_insult = choice(PIRATE_INSULTS).lower()
+                                        return "{0}, ye {1}".format(INVALID_NAME, random_insult)
+
+                                    random_greeting = choice(PIRATE_GREETINGS)
+
+                                    return "{0} {1}!".format(random_greeting, pirate_name.title())
+                                ```
+
+                            </textarea>
+
+                        </section>
+                    </section>
+
+                </section>
+
+				<section>
+
+                    <section>
+                        <h1>Feedback and questions</h1>
+
+												<a href="">Anon Feedback form</a></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h5>
+                            Thanks for participating. Now take the Flask and...<br/>
+<iframe src="https://giphy.com/embed/IxPDc96oRya6A" width="480" height="365" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                        </h5>
+
+                    </section>
+
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

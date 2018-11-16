@@ -10,7 +10,7 @@ app.config['SECRET_KEY'] = 'bottle-o-rummmmmm'
 
 
 PIRATE_GREETINGS = ['Ahoy', 'Arr! Matey', 'Arrrrr!', "SQWAK! 'ello",
-"Shiver me timbers! It's", "On to the deck"]
+"Shiver me timbers! It's", "Get on to the deck"]
 
 PIRATE_INSULTS = ["yellow bellied, lily-livered landlubber!",
 "rotten sack of fermented potatoes",
@@ -63,7 +63,9 @@ def return_invalid_department_id_error():
 # controllers
 @app.route("/")
 def hello():
-    return "Ahoy, Pirates!"
+    # return "Ahoy, Pirates!"
+    return render_template('ahoy.html')
+
 
 
 @app.route("/pirate/")
@@ -86,6 +88,7 @@ def department_booty():
     form = ReusableForm(request.form)
     error_message = None
     all_departments = get_all_departments()
+    department_booty = None
 
     if request.method == 'POST':
 
